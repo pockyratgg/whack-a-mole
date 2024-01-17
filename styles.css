@@ -1,0 +1,97 @@
+/* .grid means looking for a class, div, or element with the name grid */
+
+.grid-container{
+    width: 40%;
+
+    /*this is for centering vertically*/
+    height: 50vh; /*adjusts the space inbetween timers and grid*/
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;   /*this is for centering horizontally*/
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+.square {
+    height: 200px;
+    width: 200px;
+    border: solid rgb(97, 56, 10) 2px;
+    border-radius: 5px;
+    background-image: url('images/dirt.png');
+    
+}
+
+.mole {
+    background-color:rgb(148, 98, 53);
+    background-image: url('images/mole.png');
+    background-size: cover;
+}
+
+
+/* centers the title */
+* {
+    text-align: center;
+    color: black;
+}
+
+h2 {
+    display: inline-block;
+    text-align: center;
+    margin-right: 25px;
+    color:rgb(167, 98, 20);
+    font-family: "Courier New", Times, serif;
+    font-size: 19px;
+}
+
+  body {
+    background-image: url('images/grassybg.jpg')
+}
+
+body {
+    cursor: url('Thors\ Hammer.cur'), auto;
+}
+
+/* overlay for start and game over*/
+.overlay-text {
+    display: none; /*set to none so it only shows when our visible class is on at the right time */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: #ffd900;
+    font-family: serif;
+}
+
+/*click to restart text is set to 30% of the game over size*/
+.overlay-text-small {
+    font-size: .3em;
+}
+
+/*we use forwards here because we want all properties from the end of our animations to apply to our overlay text*/
+.overlay-text.visible {
+    display: flex;
+    flex-direction: column; /*this makes sure game over and click to restart stack ontop of each other instead of side by side*/
+    animation: overlay-grow 500ms forwards;
+}
+
+/*animation for the overlay to grow and setting the color*/
+@keyframes overlay-grow {
+    from {
+        background-color: (0, 0, 0, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, .7); /*last value darkens the background*/
+        font-size: 9em;
+    }
+}
